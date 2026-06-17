@@ -1,0 +1,49 @@
+Oto syntetyczny raport badawczy (research) dotyczący rynku **Computational Law** (prawa obliczeniowego) i nurtu **Rules as Code** (RaC).
+
+Dokument ten zbiera najważniejsze idee, sposoby modelowania, metody walidacji oraz konkretne rozwiązania technologiczne, które są obecnie rozwijane i wdrażane na świecie.
+
+---
+
+## 1. Główne Idee i Koncepcje
+
+Rynek ten opiera się na odejściu od traktowania prawa wyłącznie jako tekstu dla ludzi, na rzecz prawa jako infrastruktury cyfrowej.
+
+* **Rules as Code (RaC):** Koncepcja zakłada, że akty prawne (szczególnie te oparte na twardych wyliczeniach i warunkach, jak podatki czy zasiłki) powinny być tworzone i publikowane jednocześnie w dwóch formach: w języku naturalnym dla obywateli i sędziów oraz w kodzie maszynowym jako oficjalne API dla systemów IT.
+* **Izomorfizm prawny:** Zasada polegająca na tym, że struktura kodu musi dokładnie odzwierciedlać strukturę aktu prawnego (paragraf po paragrafie). Jeśli ustawa ma wyjątek w artykule 2, kod również musi mieć wydzielony wyjątek odpowiadający temu artykułowi.
+* **Decyzje oparte na dowodzie (Explainability):** Systemy prawne nie mogą działać jak „czarne skrzynki” (jak współczesne sieci neuronowe). Obywatel musi otrzymać jasny dowód logiczny, np. „Odmówiono świadczenia na podstawie art. 4 ust. 2, ponieważ zmienna X przekroczyła wartość Y”.
+
+## 2. Podejścia Technologiczne
+
+Obecnie rynek LegalTech i GovTech dzieli się na trzy główne podejścia, które często się uzupełniają, ale służą do innych celów.
+
+| Podejście | Zastosowanie | Zalety | Wady |
+| --- | --- | --- | --- |
+| **Systemy Deklaratywne / Regułowe** | Prawo publiczne, podatki, administracja | 100% precyzji, pełna audytowalność wyroków | Wymaga mozolnego, ręcznego kodowania ustaw |
+| **Sztuczna Inteligencja (LLM / NLP)** | Analiza umów, wyszukiwanie orzecznictwa, ekstrakcja danych | Szybkość przetwarzania, rozumienie tekstu naturalnego | Ryzyko halucynacji, brak formalnego dowodu matematycznego |
+| **Smart Kontrakty (Blockchain)** | Prawo cywilne, umowy komercyjne, własność (NFT) | Automatyczna i bezwzględna egzekucja (Code is Law) | Sztywność, ogromne koszty w przypadku błędów w kodzie |
+
+## 3. Metody Modelowania Prawa
+
+Przekładanie języka prawniczego na kod wymaga specyficznych metod inżynieryjnych, różniących się od standardowego tworzenia oprogramowania.
+
+* **Logika domniemań (Default Logic):** Prawo rzadko jest proste. Zazwyczaj składa się z zasady ogólnej („Każdy ma prawo do...”) oraz kaskady wyjątków („...chyba że...”). Programowanie opiera się tu na pisaniu reguł domyślnych, które są nadpisywane, gdy spełniony zostanie warunek wyjątku.
+* **Literate Programming:** Metoda pisania kodu przeplatanego tekstem ustawy. Ekran programisty dzieli się na dwie części: po lewej widzi oryginalny tekst prawny, po prawej przypisany do niego blok kodu. Zapewnia to wspomniany wcześniej izomorfizm.
+* **Ontologie prawne (Legal Knowledge Graphs):** Tworzenie grafów wiedzy, które definiują relacje między pojęciami (np. czym różni się "małżonek" od "partnera życiowego" w świetle konkretnej ustawy).
+
+## 4. Dostępne Narzędzia i Rozwiązania (Stan na 2026)
+
+Na rynku istnieje już szereg gotowych platform i języków programowania dedykowanych prawnikom i administracji.
+
+* **OpenFisca:** Otwartoźródłowa platforma napisana w Pythonie. Pozwala na modelowanie systemów podatkowych i socjalnych. Jest to obecnie najczęściej wdrażane rozwiązanie na poziomie państwowym (korzysta z niego rząd Francji, Nowej Zelandii i kilkadziesiąt samorządów).
+* **Catala:** Specjalistyczny język programowania (Domain-Specific Language) stworzony przez instytut INRIA we Francji. Został zaprojektowany przez programistów we współpracy z prawnikami wyłącznie do kodowania prawa. Posiada wbudowane mechanizmy chroniące przed błędami logicznymi w wyjątkach podatkowych.
+* **Blawx:** Narzędzie open-source działające w przeglądarce, oparte na logice Prologa, ale posiadające interfejs wizualny (układanie klocków logicznych). Pozwala prawnikom bez wiedzy programistycznej tworzyć reguły ubezpieczeniowe czy podatkowe.
+* **Docassemble:** Platforma do tworzenia systemów eksperckich opartych na wywiadach. Prawnik koduje reguły (np. przepisy rozwodowe), a system generuje interaktywny formularz dla klienta. Na podstawie odpowiedzi automatycznie generowany jest gotowy wniosek do sądu z zachowaniem 100% zgodności prawnej.
+* **Akoma Ntoso / LegalRuleML:** Standardy XML zatwierdzone przez organizację OASIS, służące do strukturyzacji dokumentów parlamentarnych. Nie wykonują one kodu, ale przygotowują tekst ustawy do odczytu przez maszyny.
+
+## 5. Przykłady Wdrożeń i Trendów Rynkowych
+
+* **Nowa Zelandia (Inicjatywa "Better Rules"):** Światowy pionier. Rząd powołał interdyscyplinarne zespoły (prawnik, polityk, programista), które piszą nowe prawo i kod jednocześnie. Odkryli, że próba napisania kodu na wczesnym etapie obnaża luki logiczne w polityce, zanim ustawa trafi do parlamentu.
+* **Francja (MesAides):** Rządowy symulator zbudowany na silniku OpenFisca. Obywatel wprowadza swoje dane, a system w czasie rzeczywistym przeszukuje setki skodyfikowanych ustaw, informując dokładnie, do jakich świadczeń obywatel ma prawo i z jakiego paragrafu to wynika. Zmniejszyło to problem tzw. *non-take-up* (niepobierania należnych zasiłków przez najbiedniejszych z powodu skomplikowanych procedur).
+* **Sektor Compliance (RegTech):** W sektorze prywatnym największym rynkiem dla tych rozwiązań są banki (koszty zgodności z prawem - AML, KYC, regulacje giełdowe). Zamiast czytać dyrektywy UE, banki podłączają swoje systemy pod skodyfikowane API (np. dostarczane przez startupy RegTech), które automatycznie blokują nielegalne transakcje na poziomie kodu.
+
+---
